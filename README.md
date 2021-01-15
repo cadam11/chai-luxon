@@ -1,7 +1,11 @@
 # chai-luxon
 
-Matchers for dates and formatted date strings powered by [Luxon](https://moment.github.io/luxon/)
+A [Chai](https://www.chaijs.com/) plugin that adds matchers for dates and formatted date strings powered by [Luxon](https://moment.github.io/luxon/)
 
+[![NPM Version](https://img.shields.io/npm/v/chai-luxon.svg?style=flat)]()
+[![NPM License](https://img.shields.io/npm/l/all-contributors.svg?style=flat)](http://www.tldrlegal.com/license/mit-license)
+[![NPM Downloads](https://img.shields.io/npm/dt/chai-luxon.svg?style=flat)]()  
+[![NPM](https://nodei.co/npm/chai-luxon.png?downloads=true)](https://www.npmjs.com/package/chai-luxon)  
 ## Using
 
 Also see the [tests](https://github.com/cadam11/chai-luxon/tree/master/test/)
