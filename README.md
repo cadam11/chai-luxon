@@ -40,11 +40,11 @@ var dateString = '2020-04-21',
   oneDayLater = DateTime.fromISO('2020-04-22');
 
 // using should-style assertions
-dateString.should.be.sameJSDate(date);
+dateString.should.be.sameDateTime(date);
 dateString.should.be.sameDateTime(oneDayLater, 'month');
 
 // using expect-style assertions
-expect(milliseconds).to.be.sameObj(obj);
+expect(milliseconds).to.be.sameDateTime(obj);
 expect(dateString).to.be.sameDateTime(oneDayLater, 'month');
 
 // using tdd assertions
@@ -94,21 +94,6 @@ assert.afterDateTime(oneDayLater, luxonDateTime);
 assert.afterDateTime(oneDayLater, luxonDateTime, 'month'); // fails
 assert.afterDateTime(oneDayLater, luxonDateTime, 'month', 'custom error message'); // fails
 assert.afterDateTime(oneDayLater, luxonDateTime, 'custom error message');
-```
-
-## Configuration
-
-### setErrorFormat(format)
-
-Sets the [format](https://moment.github.io/luxon/docs/manual/formatting.html) used for reporting DateTimes in failed assertions.
-
-```javascript
-var chaiLuxon = require('chai-luxon');
-
-chaiLuxon.setErrorFormat('D');
-
-expect(DateTime.fromISO('2020-04-21')).to.be.beforeDateTime(DateTime.fromISO('2020-04-22'));
-// Error('expected 04/21/2021 to be before 04/22/2020')
 ```
 
 # Thanks
