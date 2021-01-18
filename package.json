@@ -1,6 +1,6 @@
 {
   "name": "chai-luxon",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "date assertions for chai, powered by luxon",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,8 @@
     "chai",
     "luxon",
     "test",
-    "assertions"
+    "assertions",
+    "chai-plugin"
   ],
   "author": "Craig Adam <craig@adam11.ca>",
   "license": "MIT",
