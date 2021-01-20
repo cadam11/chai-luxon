@@ -1,7 +1,7 @@
 {
   "name": "chai-luxon",
-  "version": "0.1.2",
-  "description": "date assertions for chai, powered by luxon",
+  "version": "0.2.0",
+  "description": "DateTime assertions for Chai, powered by Luxon",
   "main": "index.js",
   "scripts": {
     "lint": "eslint index.js /test",
@@ -13,7 +13,9 @@
     "luxon",
     "test",
     "assertions",
-    "chai-plugin"
+    "chai-plugin",
+    "date",
+    "time"
   ],
   "author": "Craig Adam <craig@adam11.ca>",
   "license": "MIT",

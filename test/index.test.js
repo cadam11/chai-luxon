@@ -18,6 +18,8 @@ const oneDayLater = DateTime.fromISO('2020-04-22');
 const oneDayBefore = DateTime.fromISO('2020-04-20');
 const oneYearLater = DateTime.fromISO('2021-04-21');
 
+const oneHourLater = luxonDateTime.plus({ hour: 1 });
+
 describe('sameDateTime', () => {
   describe('should-style tests', () => {
     it('should pass for type `string`', () => {
@@ -112,6 +114,32 @@ describe('sameDateTime', () => {
   });
 });
 
+describe('sameDate', () => {
+  describe('should-style tests', () => {
+    it('should pass for different time', () => {
+      date.should.be.sameDate(oneHourLater);
+    });
+  });
+
+  describe('expect-style tests', function () {
+    it('should pass for different time', () => {
+      expect(date).to.be.sameDate(oneHourLater);
+    });
+  });
+
+  describe('tdd-style tests', function () {
+    it('should pass for type `string`', () => {
+      assert.sameDate(dateString, oneHourLater);
+    });
+  });
+
+  it('assertion should fail for non-same Date', () => {
+    assert.throws(() => {
+      assert.sameDateT(oneDayBefore, oneHourLater);
+    });
+  });
+});
+
 describe('afterDateTime', () => {
   it('should-style test should pass', () => {
     oneDayLater.should.be.afterDateTime(luxonDateTime);
@@ -152,6 +180,32 @@ describe('afterDateTime', () => {
   });
 });
 
+describe('afterDate', () => {
+  describe('should-style tests', () => {
+    it('should pass for different time', () => {
+      oneHourLater.should.be.afterDate(oneDayBefore);
+    });
+  });
+
+  describe('expect-style tests', function () {
+    it('should pass for different time', () => {
+      expect(oneHourLater).to.be.afterDate(oneDayBefore);
+    });
+  });
+
+  describe('tdd-style tests', function () {
+    it('should pass for type `string`', () => {
+      assert.afterDate(oneHourLater, oneDayBefore);
+    });
+  });
+
+  it('assertion should fail for non-after Date', () => {
+    assert.throws(() => {
+      assert.afterDate(oneDayBefore, oneHourLater);
+    });
+  });
+});
+
 describe('beforeDateTime', () => {
   it('should-style test should pass', () => {
     oneDayBefore.should.be.beforeDateTime(luxonDateTime);
@@ -188,6 +242,32 @@ describe('beforeDateTime', () => {
       assert.throws(() => {
         assert.beforeDateTime(luxonDateTime, obj, 'DateTime is not before expected');
       }, 'DateTime is not before expected');
+    });
+  });
+});
+
+describe('beforeDate', () => {
+  describe('should-style tests', () => {
+    it('should pass for different time', () => {
+      oneDayBefore.should.be.beforeDate(oneHourLater);
+    });
+  });
+
+  describe('expect-style tests', function () {
+    it('should pass for different time', () => {
+      expect(oneDayBefore).to.be.beforeDate(oneHourLater);
+    });
+  });
+
+  describe('tdd-style tests', function () {
+    it('should pass for type `string`', () => {
+      assert.beforeDate(oneDayBefore, oneHourLater);
+    });
+  });
+
+  it('assertion should fail for non-after Date', () => {
+    assert.throws(() => {
+      assert.beforeDate(oneHourLater, oneDayBefore);
     });
   });
 });

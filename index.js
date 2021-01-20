@@ -22,6 +22,17 @@ function _chaiLuxon(chai, utils) {
       ? DateTime.fromJSDate(obj)
       : DateTime.fromObject(obj);
 
+  chai.Assertion.addMethod('sameDate', function (expected) {
+    const obj = this._obj;
+    const objDateTime = L(obj);
+    const expectedDateTime = L(expected);
+
+    const expectedPassMessage = `expected ${objDateTime.toLocaleString()} to be the same date as ${expectedDateTime.toLocaleString()}`;
+    const expectedFailMessage = `expected ${objDateTime.toLocaleString()} not to be the same date as ${expectedDateTime.toLocaleString()}`;
+
+    this.assert(objDateTime.hasSame(expectedDateTime, 'day'), expectedPassMessage, expectedFailMessage, expectedDateTime, obj, true);
+  });
+
   chai.Assertion.addMethod('sameDateTime', function (expected, granularity) {
     const obj = this._obj;
     const objDateTime = L(obj);
@@ -60,6 +71,24 @@ function _chaiLuxon(chai, utils) {
     );
   });
 
+  chai.Assertion.addMethod('beforeDate', function (expected) {
+    const obj = this._obj;
+    const objDateTime = L(obj);
+    const expectedDateTime = L(expected);
+
+    const expectedPassMessage = `expected ${objDateTime.toLocaleString()} to have a date before ${expectedDateTime.toLocaleString()}`;
+    const expectedFailMessage = `expected ${objDateTime.toLocaleString()} not to have a date before ${expectedDateTime.toLocaleString()}`;
+
+    this.assert(
+      objDateTime.startOf('day') < expectedDateTime.startOf('day'),
+      expectedPassMessage,
+      expectedFailMessage,
+      expectedDateTime,
+      obj,
+      true
+    );
+  });
+
   chai.Assertion.addMethod('afterDateTime', function (expected, granularity) {
     const obj = this._obj;
     const objDateTime = L(obj);
@@ -79,6 +108,24 @@ function _chaiLuxon(chai, utils) {
     );
   });
 
+  chai.Assertion.addMethod('afterDate', function (expected) {
+    const obj = this._obj;
+    const objDateTime = L(obj);
+    const expectedDateTime = L(expected);
+
+    const expectedPassMessage = `expected ${objDateTime.toLocaleString()} to have a date after ${expectedDateTime.toLocaleString()}`;
+    const expectedFailMessage = `expected ${objDateTime.toLocaleString()} not to have a date after ${expectedDateTime.toLocaleString()}`;
+
+    this.assert(
+      objDateTime.startOf('day') > expectedDateTime.startOf('day'),
+      expectedPassMessage,
+      expectedFailMessage,
+      expectedDateTime,
+      obj,
+      true
+    );
+  });
+
   //export tdd style
   const assert = chai.assert;
 
@@ -90,14 +137,26 @@ function _chaiLuxon(chai, utils) {
     new chai.Assertion(val, msg).to.be.sameDateTime(exp, granularity);
   };
 
+  assert.sameDate = (val, exp, msg) => {
+    new chai.Assertion(val, msg).to.be.sameDate(exp);
+  };
+
   assert.beforeDateTime = (val, exp, granularity, msg) => {
     if (!allowedGranularitiesLookup[granularity]) msg = granularity;
     new chai.Assertion(val, msg).to.be.beforeDateTime(exp, granularity);
   };
 
+  assert.beforeDate = (val, exp, msg) => {
+    new chai.Assertion(val, msg).to.be.beforeDate(exp);
+  };
+
   assert.afterDateTime = (val, exp, granularity, msg) => {
     if (!allowedGranularitiesLookup[granularity]) msg = granularity;
     new chai.Assertion(val, msg).to.be.afterDateTime(exp, granularity);
+  };
+
+  assert.afterDate = (val, exp, msg) => {
+    new chai.Assertion(val, msg).to.be.afterDate(exp);
   };
 }
 
