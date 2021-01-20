@@ -1,7 +1,8 @@
 {
   "name": "chai-luxon",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "DateTime assertions for Chai, powered by Luxon",
+  "repository": "github:cadam11/chai-luxon",
   "main": "index.js",
   "scripts": {
     "lint": "eslint index.js /test",
